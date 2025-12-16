@@ -1,9 +1,73 @@
 import React from 'react'
+import Banner from "./component/Banner";
+import IconText from "./component/IconText";
+import RecommendationSlider from "./component/RecommendationSlider";
+import { MdOutlineLocalShipping } from 'react-icons/md';
 
 const page = () => {
+  const products = [
+  {
+    image: "/watch.png",
+    title: "Black Automatic Watch",
+    price: 169.99,
+    oldPrice: 199.99,
+    rating: "4.9 (98)",
+  },
+  {
+    image: "/watch.png",
+    title: "Black Automatic Watch",
+    price: 169.99,
+    oldPrice: 199.99,
+    rating: "4.9 (98)",
+  },
+  {
+    image: "/watch.png",
+    title: "Black Automatic Watch",
+    price: 169.99,
+    oldPrice: 199.99,
+    rating: "4.9 (98)",
+  },
+  {
+    image: "/watch.png",
+    title: "Black Automatic Watch",
+    price: 169.99,
+    oldPrice: 199.99,
+    rating: "4.9 (98)",
+  },
+];
   return (
     <div>
-           <h1>heloo would</h1>
+      <Banner/>
+      <div className="container mt-[80px] flex justify-between items-center">
+        <IconText
+          icon={<MdOutlineLocalShipping />} size={34}
+          title='Free shipping'
+          subtitle='On orders over $50.00'
+        />
+        <IconText
+          icon={<MdOutlineLocalShipping />} size={34}
+          title='Free shipping'
+          subtitle='On orders over $50.00'
+        />
+        <IconText
+          icon={<MdOutlineLocalShipping />} size={34}
+          title='Free shipping'
+          subtitle='On orders over $50.00'
+        />
+        <IconText
+          icon={<MdOutlineLocalShipping />} size={34}
+          title='Free shipping'
+          subtitle='On orders over $50.00'
+        />
+      </div>
+      <div className='my-[90px]'>
+          <main className="container mx-auto px-4">
+            <RecommendationSlider 
+             text=' Best matching products for you'
+              products={products} />
+           </main>
+
+        </div>
     </div>
   )
 }
