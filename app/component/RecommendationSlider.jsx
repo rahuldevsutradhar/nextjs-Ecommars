@@ -42,11 +42,8 @@ export default function RecommendationSlider({ products= [] , text}) {
             <div className="bg-white rounded-xl p-4 text-center shadow-sm">
               {/* Image */}
               <div className="relative w-full h-[260px] flex items-center justify-center">
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  fill
-                  className="object-contain"
+                <Image src={item.image} alt={item.title}
+                  fill className="object-contain"
                 />
               </div>
 

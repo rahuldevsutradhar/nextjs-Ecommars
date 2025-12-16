@@ -7,6 +7,7 @@ import Image from 'next/image';
 import BannerTwo from './bannerTwo.png'
 
 const page = () => {
+  
   const products = [
   {
     image: "/watch.png",
