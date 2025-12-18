@@ -1,129 +1,124 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { useRouter } from "next/navigation"
 
 export default function Registration() {
-  const router = useRouter();
+    const router = useRouter();
 
-  const handleContinue = (e) => {
-    e.preventDefault();
-    // এখানে চাইলে API call করতে পারো
-    router.push("/verify-otp");
+  const [formData, setFormData] = useState({
+    userName: "",
+    email: "",
+    password: "",
+    phone: "",
+    address: "",
+    userRole: "",
+    gender: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleIncrement = async (e) => {
+    e.preventDefault(); 
+
+    try {
+      const res = await fetch("http://localhost:8000/auth/registration", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+      console.log(data);
+    } catch (error) {
+      console.error(error);
+    }
+     router.push("/otp")
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
       <div className="w-full max-w-md bg-white rounded-xl shadow-md p-6 sm:p-8">
-        {/* Title */}
         <h1 className="text-2xl font-bold text-[#111827] mb-2">
-         Registration
+          Registration
         </h1>
         <p className="text-sm text-[#4B556399] mb-6">
           Enter your details to continue
         </p>
 
-        <form onSubmit={handleContinue} className="space-y-4">
-          {/* Username */}
-          <div>
-            <label className="block text-sm mb-1 text-[#4B556399]">
-              Username
-            </label>
-            <input
-              type="text"
-              placeholder="Enter username"
-              className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-gray-300"
-            />
-          </div>
+        <form onSubmit={handleIncrement} className="space-y-4">
+          <input
+            name="userName"
+            placeholder="Username"
+            onChange={handleChange}
+            className="w-full border px-3 py-2 rounded-lg"
+          />
 
-          {/* Email */}
-          <div>
-            <label className="block text-sm mb-1 text-[#4B556399]">
-              Email
-            </label>
-            <input
-              type="email"
-              placeholder="Enter email"
-              className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-gray-300"
-            />
-          </div>
+          <input
+            name="email"
+            type="email"
+            placeholder="Email"
+            onChange={handleChange}
+            className="w-full border px-3 py-2 rounded-lg"
+          />
 
-          {/* Password */}
-          <div>
-            <label className="block text-sm mb-1 text-[#4B556399]">
-              Password
-            </label>
-            <input
-              type="password"
-              placeholder="Enter password"
-              className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-gray-300"
-            />
-          </div>
+          <input
+            name="password"
+            type="password"
+            placeholder="Password"
+            onChange={handleChange}
+            className="w-full border px-3 py-2 rounded-lg"
+          />
 
-          {/* Phone */}
-          <div>
-            <label className="block text-sm mb-1 text-[#4B556399]">
-              Phone
-            </label>
-            <input
-              type="tel"
-              placeholder="Enter phone number"
-              className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-gray-300"
-            />
-          </div>
+          <input
+            name="phone"
+            placeholder="Phone"
+            onChange={handleChange}
+            className="w-full border px-3 py-2 rounded-lg"
+          />
 
-          {/* Address */}
-          <div>
-            <label className="block text-sm mb-1 text-[#4B556399]">
-              Address
-            </label>
-            <input
-              type="text"
-              placeholder="Enter address"
-              className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-gray-300"
-            />
-          </div>
+          <input
+            name="address"
+            placeholder="Address"
+            onChange={handleChange}
+            className="w-full border px-3 py-2 rounded-lg"
+          />
 
-          {/* User Role */}
-          <div>
-            <label className="block text-sm mb-1 text-[#4B556399]">
-              User Role
-            </label>
-            <select className="w-full border rounded-lg px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-gray-300">
-              <option value="">Select role</option>
-              <option value="user">User</option>
-              <option value="admin">Admin</option>
-            </select>
-          </div>
+          <select
+            name="userRole"
+            onChange={handleChange}
+            className="w-full border px-3 py-2 rounded-lg"
+          >
+            <option value="">Select role</option>
+            <option value="user">User</option>
+            <option value="admin">Admin</option>
+          </select>
 
-          {/* Gender */}
-          <div>
-            <label className="block text-sm mb-1 text-[#4B556399]">
-              Gender
-            </label>
-            <select className="w-full border rounded-lg px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-gray-300">
-              <option value="">Select gender</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
+          <select
+            name="gender"
+            onChange={handleChange}
+            className="w-full border px-3 py-2 rounded-lg"
+          >
+            <option value="">Select gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
 
-          {/* Button */}
-          <button
-            type="submit"
-            className="w-full mt-4 bg-gray-900 text-white py-2.5 rounded-lg hover:bg-gray-800 transition"
+          <button 
+          type="submit"
+          className="w-full bg-gray-900 text-white py-2 rounded-lg"
           >
             Continue
           </button>
         </form>
-
-        {/* Login link */}
-        <p className="text-center text-sm text-[#4B556399] mt-4">
-          Already have an account?{" "}
-          <span className="text-[#111827] font-medium cursor-pointer hover:underline">
-            Login
-          </span>
-        </p>
       </div>
     </div>
   );
