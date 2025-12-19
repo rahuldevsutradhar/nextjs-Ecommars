@@ -17,7 +17,10 @@ export default function LoginPage() {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({
+         email, 
+         password
+         }),
     });
 
     if (res.ok) {
@@ -60,9 +63,7 @@ export default function LoginPage() {
           
           <div>
             <label className="block text-sm mb-1 text-[#4B556399]">Password</label>
-            <input
-              type="password"
-              value={password}
+            <input type="password" value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Enter your password"
               className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-gray-300"
@@ -70,12 +71,12 @@ export default function LoginPage() {
             />
           </div>
 
-          {/* Forgot password */}
+          
           <p className="text-right text-sm text-[#4B556399] hover:underline cursor-pointer">
             Forgot password?
           </p>
 
-          {/* Login button */}
+         
           <button
             type="submit"
             className="w-full bg-gray-900 text-white py-2.5 rounded-lg hover:bg-gray-800 transition"

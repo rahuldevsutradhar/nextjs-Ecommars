@@ -71,6 +71,7 @@ const page = () => {
            </main>
 
         </div>
+        
       <div className='my-[90px]'>
           <main className="container mx-auto px-4">
             <RecommendationSlider 
