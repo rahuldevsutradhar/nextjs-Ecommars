@@ -8,36 +8,8 @@ import BannerTwo from './bannerTwo.png'
 
 const page = () => {
   
-  const products = [
-  {
-    image: "/watch.png",
-    title: "Black Automatic Watch",
-    price: 169.99,
-    oldPrice: 199.99,
-    rating: "4.9 (98)",
-  },
-  {
-    image: "/watch.png",
-    title: "Black Automatic Watch",
-    price: 169.99,
-    oldPrice: 199.99,
-    rating: "4.9 (98)",
-  },
-  {
-    image: "/watch.png",
-    title: "Black Automatic Watch",
-    price: 169.99,
-    oldPrice: 199.99,
-    rating: "4.9 (98)",
-  },
-  {
-    image: "/watch.png",
-    title: "Black Automatic Watch",
-    price: 169.99,
-    oldPrice: 199.99,
-    rating: "4.9 (98)",
-  },
-];
+  const products = [];
+  
   return (
     <div >
       <Banner/>

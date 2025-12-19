@@ -28,7 +28,7 @@ export default async function RecommendationSlider({ text }) {
               <Image src={item.mainImaage} alt={item.productTitle} fill className="object-contain" />
             </div>
             <h3 className="mt-2 text-[16px] font-medium text-gray-900">{item.productTitle}</h3>
-            <p className="text-sm text-gray-400">Accessories</p>
+            <p className="text-sm text-gray-400">{item.productDescribtion}</p>
             <div className="flex justify-center gap-2 mt-1">
               <span className="font-semibold text-gray-900">${item.discountPrice}</span>
               {item.price && item.discountPrice !== item.price && (
